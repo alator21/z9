@@ -3,7 +3,14 @@ $(function() {
     $(document).on('change', 'input[type=checkbox]', function() {
         let permissionsScore = calcuatePermissionsScore();
         let umaskValue = calcuateUMaskValue(permissionsScore);
-        $('#umaskValue').val(umaskValue);
+        umaskValue[0] = `Result umask for Folders: ${umaskValue[0].join('')}`;
+        if (umaskValue[1] == -1) {
+            umaskValue[1] = 'Cant set umask with these values for Files'
+        } else {
+            umaskValue[1] = `Result umask for Files: ${umaskValue[1].join('')}`
+        }
+        $('#umaskValueFolder').val(`${umaskValue[0]}`);
+        $('#umaskValueFile').val(`${umaskValue[1]}`);
     })
 })
 
@@ -95,9 +102,21 @@ function calcuateUMaskValue(score) {
             val[i] += 1;
         }
     }
-    let full = [7,7,7];
-    for (let i=0;i<full.length;i++){
-    	val[i] = full[i] - val[i]
+    let full1 = [7, 7, 7];
+    let full2 = [6, 6, 6];
+    for (let i = 0; i < full1.length; i++) {
+        full1[i] -= val[i]
+        full2[i] -= val[i];
+        if (val[i] % 2 == 1) {
+            full2[i] = -1;
+        }
     }
-    return val;
+    for (let i = 0; i < full2.length; i++) {
+        if (full2[i] < 0) {
+            full2 = -1;
+            break;
+        }
+    }
+
+    return [full1, full2];
 }
