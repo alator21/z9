@@ -1,2 +1,2 @@
 # z9
-umask graphical editor using Javascript.
+umask graphical editor using Javascript.(In Progress)
