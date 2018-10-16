@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>z9</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Custom Libraries -->
+    <script type="text/javascript" src='z9.js'></script>
+    <style type="text/css">
+    .title {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div class='container-fluid'>
+        <div class='col-md-3'>
+        </div>
+        <div class='col-md-6 text-center'>
+            <span class='title'>
+	        	Owner
+	        </span>
+            <br>
+            <label class="checkbox-inline"><input type="checkbox" data-group='owner' data-permission='read'>Read</label>
+            <label class="checkbox-inline"><input type="checkbox" data-group='owner' data-permission='write'>Write</label>
+            <label class="checkbox-inline"><input type="checkbox" data-group='owner' data-permission='execute'>Execute</label>
+            <br><br>
+            <span class='title'>
+	        	Group
+	        </span>
+            <br>
+            <label class="checkbox-inline"><input type="checkbox" data-group='group' data-permission='read'>Read</label>
+            <label class="checkbox-inline"><input type="checkbox" data-group='group' data-permission='write'>Write</label>
+            <label class="checkbox-inline"><input type="checkbox" data-group='group' data-permission='execute'>Execute</label>
+            <br><br>
+            <span class='title'>
+	        	Others
+	        </span>
+            <br>
+            <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='read'>Read</label>
+            <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='write'>Write</label>
+            <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='execute'>Execute</label>
+            <br><br><br>
+            <input type="text" name="" id='umaskValue' class='form-control text-center' disabled>
+        </div>
+        <div class='col-md-3'>
+        </div>
+    </div>
+</body>
+
+</html>
