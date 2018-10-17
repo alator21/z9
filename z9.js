@@ -2,15 +2,36 @@ $(function() {
 
     $(document).on('change', 'input[type=checkbox]', function() {
         let permissionsScore = calcuatePermissionsScore();
-        let umaskValue = calcuateUMaskValue(permissionsScore);
-        umaskValue[0] = `Result umask for Folders: ${umaskValue[0].join('')}`;
-        if (umaskValue[1] == -1) {
-            umaskValue[1] = 'Cant set umask with these values for Files'
-        } else {
-            umaskValue[1] = `Result umask for Files: ${umaskValue[1].join('')}`
+        let umaskValue = calculateUMaskValue(permissionsScore);
+        let umaskValueFolder = umaskValue[0];
+        let umaskValueFile = umaskValue[1];
+
+        let permissionsValue1 = calculatePermissions(umaskValueFolder);
+        let permissionsFromFolderToFile =  permissionsValue1[1];
+
+        let permissionsValue2 = calculatePermissions(umaskValueFile);
+        let permissionsFromFileToFolder = permissionsValue2[0];
+        
+        let folder1text = `Result umask for folders: ${umaskValueFolder.join('')}`;
+        let folder2text = `Using umask-> ${umaskValueFolder.join('')}, files will have ${permissionsFromFolderToFile.join('')} permissions`;
+
+        let file1text;
+        let file2text;
+        if (umaskValueFile == -1){
+            file1text = `Cant set umask with these values for files.`
+            file2text = ``;
         }
-        $('#umaskValueFolder').val(`${umaskValue[0]}`);
-        $('#umaskValueFile').val(`${umaskValue[1]}`);
+        else{
+            file1text = `Result umask for files: ${umaskValueFile.join('')}`
+            file2text = `Using umask-> ${umaskValueFile.join('')}, folders will have ${permissionsFromFileToFolder.join('')} permissions`;
+        }
+
+        $('#umaskValueFolder').val(`${folder1text}`);
+        $('#collapseFolder').text(`${folder2text}`);
+
+        $('#umaskValueFile').val(`${file1text}`);
+        $('#collapseFile').text(`${file2text}`);
+        
     })
 })
 
@@ -87,7 +108,7 @@ function calcuatePermissionsScore() {
     return permissionsScore;
 }
 
-function calcuateUMaskValue(score) {
+function calculateUMaskValue(score) {
     let val = [0, 0, 0];
     for (let i = 0; i < score.length; i++) {
         if (score[i][0] == 1) {
@@ -119,4 +140,19 @@ function calcuateUMaskValue(score) {
     }
 
     return [full1, full2];
+}
+
+function calculatePermissions(umask) {
+    console.log(`umask -> ${umask}`)
+    let full1 = [7, 7, 7];
+    let full2 = [6, 6, 6];
+
+    for (let i = 0; i < umask.length; i++) {
+        full1[i] -= umask[i];
+        full2[i] -= umask[i];
+        if (full2[i] < 0){
+            full2[i] = 0;
+        }
+    }
+    return [full1,full2];
 }

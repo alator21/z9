@@ -44,8 +44,33 @@
             <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='write'>Write</label>
             <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='execute'>Execute</label>
             <br><br><br><br>
-            <input type="text" class="form-control text-center" id='umaskValueFolder' disabled>
+            <div class="input-group">
+                <input type="text" class="form-control" id='umaskValueFolder' disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseFolder">
+                       <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                </span>
+            </div>
+            <div class="panel-collapse collapse" id='collapseFolder'>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id='umaskValueFile' disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseFile">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+               </span>
+            </div>
+            <div class="panel-collapse collapse" id='collapseFile'>
+            </div>
+            <!--
+            <input type="text" class="form-control text-center" id='umaskValueFolder' data-toggle="collapse" data-target="#collapse1" disabled>
+            <div id='collapse1' class="panel-collapse collapse">
+                hidden
+            </div>
             <input type="text" class="form-control text-center" id='umaskValueFile' disabled>
+        -->
         </div>
         <div class='col-md-3'>
         </div>
