@@ -19,6 +19,10 @@
         </div>
         <div class='col-md-6 text-center'>
             <div class='text-center'>
+                <h3>
+                    UMASK Generator(<a href="https://alator21.github.io/z9/">z9</a>)
+                </h3>
+                <br>
                 <span class='t1'>
                     I want these permissions...
                 </span>
@@ -31,17 +35,17 @@
             <div class='btn-group' data-toggle="buttons">
                 <label class="btn btn-default">
                     Read
-                    <input type="checkbox" autocomplete="off" data-group='owner' data-permission='read'/>
+                    <input type="checkbox" autocomplete="off" data-group='owner' data-permission='read' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
                 <label class="btn btn-default">
                     Write
-                    <input type="checkbox" autocomplete="off" data-group='owner' data-permission='write'/>
+                    <input type="checkbox" autocomplete="off" data-group='owner' data-permission='write' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
                 <label class="btn btn-default">
                     Execute
-                    <input type="checkbox" autocomplete="off" data-group='owner' data-permission='execute'/>
+                    <input type="checkbox" autocomplete="off" data-group='owner' data-permission='execute' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
             </div>
@@ -55,17 +59,17 @@
             <div class='btn-group' data-toggle="buttons">
                 <label class="btn btn-default">
                     Read
-                    <input type="checkbox" autocomplete="off" data-group='group' data-permission='read'/>
+                    <input type="checkbox" autocomplete="off" data-group='group' data-permission='read' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
-                <label class="btn btn-default" >
+                <label class="btn btn-default">
                     Write
-                    <input type="checkbox" autocomplete="off" data-group='group' data-permission='write'/>
+                    <input type="checkbox" autocomplete="off" data-group='group' data-permission='write' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
                 <label class="btn btn-default">
                     Execute
-                    <input type="checkbox" autocomplete="off" data-group='group' data-permission='execute'/>
+                    <input type="checkbox" autocomplete="off" data-group='group' data-permission='execute' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
             </div>
@@ -79,46 +83,25 @@
             <div class='btn-group' data-toggle="buttons">
                 <label class="btn btn-default">
                     Read
-                    <input type="checkbox" autocomplete="off" data-group='others' data-permission='read'/>
+                    <input type="checkbox" autocomplete="off" data-group='others' data-permission='read' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
                 <label class="btn btn-default">
                     Write
-                    <input type="checkbox" autocomplete="off" data-group='others' data-permission='write'/>
+                    <input type="checkbox" autocomplete="off" data-group='others' data-permission='write' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
                 <label class="btn btn-default">
                     Execute
-                    <input type="checkbox" autocomplete="off" data-group='others' data-permission='execute'/>
+                    <input type="checkbox" autocomplete="off" data-group='others' data-permission='execute' />
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
             </div>
-            <!--
-            <label class="checkbox-inline"><input type="checkbox" data-group='owner' data-permission='read'>Read</label>
-            <label class="checkbox-inline"><input type="checkbox" data-group='owner' data-permission='write'>Write</label>
-            <label class="checkbox-inline"><input type="checkbox" data-group='owner' data-permission='execute'>Execute</label>
-            <br><br>
-            <span class='title'>
-                Group
-            </span>
-            <br>
-            <label class="checkbox-inline"><input type="checkbox" data-group='group' data-permission='read'>Read</label>
-            <label class="checkbox-inline"><input type="checkbox" data-group='group' data-permission='write'>Write</label>
-            <label class="checkbox-inline"><input type="checkbox" data-group='group' data-permission='execute'>Execute</label>
-            <br><br>
-            <span class='title'>
-                Others
-            </span>
-            <br>
-            <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='read'>Read</label>
-            <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='write'>Write</label>
-            <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='execute'>Execute</label>
-            -->
             <br><br><br><br>
             <span class='t1'>
                 on Folders?
             </span>
-            <div class="input-group" >
+            <div class="input-group">
                 <input type="text" class="form-control" id='umaskValueFolder' readonly>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseFolder">
@@ -128,7 +111,7 @@
             </div>
             <div class="panel-collapse collapse" id='collapseFolder'>
             </div>
-            <br><br><br>
+            <br>
             <span class='t1'>
                 on Files?
             </span>
@@ -144,6 +127,18 @@
             </div>
         </div>
         <div class='col-md-3'>
+            <div class='col-md-7'>
+            </div>
+            <div class='col-md-5'>
+                <div id='footer'>
+                    <span class='t2'>
+                        created by 
+                        <a href="https://github.com/alator21">
+                            Alator
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </body>
