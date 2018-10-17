@@ -149,8 +149,21 @@ function calculatePermissions(umask) {
     for (let i = 0; i < umask.length; i++) {
         full1[i] -= umask[i];
         full2[i] -= umask[i];
-        if (full2[i] < 0){
-            full2[i] = 0;
+        switch(full2[i]){
+            case -1:
+                full2[i] = 0
+                break;
+            case 1:
+                full2[i] = 2;
+                break;
+            case 3:
+                full2[i] = 4;
+                break;
+            case 5:
+                full2[i] = 6;
+                break;
+            default:
+                break;
         }
     }
     return [full1,full2];
