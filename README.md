@@ -7,6 +7,7 @@ Contributors are welcome!
 
 UMASK Calculation Algorithm:
 
+```
 function calculateUMASKFolder(permissions){  //permissions = [x,x,x,x,x,x,x,x,x] where x = 0 or 1
 	let fullFolderPermissions = [7,7,7];
 
@@ -20,8 +21,9 @@ function calculateUMASKFolder(permissions){  //permissions = [x,x,x,x,x,x,x,x,x]
 
 	return umask; //  umask[x,x,x] where  0<x<7
 }
+```
 
-
+```
 function calculateUMASKFile(permissions){
 	let fullFilePermissions = [6,6,6];
 
@@ -38,8 +40,9 @@ function calculateUMASKFile(permissions){
 
 	return umask; //  umask[x,x,x] where  0<x<7
 }
+```
 
-
+```
 function combinePermissions(permissions){
 	
 	let combPermissions = [0,0,0];
@@ -52,3 +55,4 @@ function combinePermissions(permissions){
 			combPermissions += 1;
 	}
 }
+```
