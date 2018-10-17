@@ -12,6 +12,10 @@
     .title {
         color: red;
     }
+    .t1{
+        color:blue;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -20,6 +24,10 @@
         <div class='col-md-3'>
         </div>
         <div class='col-md-6 text-center'>
+            <span class='t1'>
+                I want these permissions...
+            </span>
+            <br>
             <span class='title'>
                 Owner
             </span>
@@ -44,6 +52,9 @@
             <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='write'>Write</label>
             <label class="checkbox-inline"><input type="checkbox" data-group='others' data-permission='execute'>Execute</label>
             <br><br><br><br>
+            <span class='t1'>
+                on Folders?
+            </span>
             <div class="input-group">
                 <input type="text" class="form-control" id='umaskValueFolder' disabled>
                 <span class="input-group-btn">
@@ -54,6 +65,9 @@
             </div>
             <div class="panel-collapse collapse" id='collapseFolder'>
             </div>
+            <span class='t1'>
+                on Files?
+            </span>
             <div class="input-group">
                 <input type="text" class="form-control" id='umaskValueFile' disabled>
                 <span class="input-group-btn">
@@ -64,13 +78,6 @@
             </div>
             <div class="panel-collapse collapse" id='collapseFile'>
             </div>
-            <!--
-            <input type="text" class="form-control text-center" id='umaskValueFolder' data-toggle="collapse" data-target="#collapse1" disabled>
-            <div id='collapse1' class="panel-collapse collapse">
-                hidden
-            </div>
-            <input type="text" class="form-control text-center" id='umaskValueFile' disabled>
-        -->
         </div>
         <div class='col-md-3'>
         </div>

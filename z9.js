@@ -12,8 +12,8 @@ $(function() {
         let permissionsValue2 = calculatePermissions(umaskValueFile);
         let permissionsFromFileToFolder = permissionsValue2[0];
         
-        let folder1text = `Result umask for folders: ${umaskValueFolder.join('')}`;
-        let folder2text = `Using umask-> ${umaskValueFolder.join('')}, files will have ${permissionsFromFolderToFile.join('')} permissions`;
+        let folder1text = `Then use umask: ${umaskValueFolder.join('')}`;
+        let folder2text = `BE AWARE, files will then have ${permissionsNames(permissionsFromFolderToFile).join('')} permissions.`;
 
         let file1text;
         let file2text;
@@ -22,8 +22,8 @@ $(function() {
             file2text = ``;
         }
         else{
-            file1text = `Result umask for files: ${umaskValueFile.join('')}`
-            file2text = `Using umask-> ${umaskValueFile.join('')}, folders will have ${permissionsFromFileToFolder.join('')} permissions`;
+            file1text = `Then use umask: ${umaskValueFile.join('')}`
+            file2text = `BE AWARE, folders will then have ${permissionsNames(permissionsFromFileToFolder).join('')} permissions.`;
         }
 
         $('#umaskValueFolder').val(`${folder1text}`);
@@ -155,4 +155,56 @@ function calculatePermissions(umask) {
         }
     }
     return [full1,full2];
+}
+
+function permissionsNames(permissions){
+    let retval = [];
+
+    for (let permission of permissions){
+        retval.push('|')
+        switch(permission){
+            case 7:
+                retval.push('r');
+                retval.push('w');
+                retval.push('x');
+                break;
+            case 6:
+                retval.push('r');
+                retval.push('w');
+                retval.push('-');
+                break;
+            case 5:
+                retval.push('r');
+                retval.push('-');
+                retval.push('x');
+                break;
+            case 4:
+                retval.push('r');
+                retval.push('-');
+                retval.push('-');
+                break;
+            case 3:
+                retval.push('-');
+                retval.push('w');
+                retval.push('x');
+                break;
+            case 2:
+                retval.push('-');
+                retval.push('w');
+                retval.push('-');
+                break;
+            case 1:
+                retval.push('-');
+                retval.push('-');
+                retval.push('x');
+                break;
+            case 0:
+                retval.push('-');
+                retval.push('-');
+                retval.push('-');
+                break;
+        }
+    }
+    retval.push('|');
+    return retval;
 }
