@@ -1,43 +1,63 @@
 $(function() {
 
-    $(document).on('change', 'input[type=checkbox]', function() {
-        let permissionsScore = calcuatePermissionsScore();
-        let umaskValue = calculateUMaskValue(permissionsScore);
+    $(document).on('change', '[data-type-folder]', function() {
+        let permissionsScore = calculatePermissionsScore('[data-type-folder]');
+        let umaskValue = calculateUMaskValueByScore(permissionsScore);
         let umaskValueFolder = umaskValue[0];
-        let umaskValueFile = umaskValue[1];
 
-        let permissionsValue1 = calculatePermissions(umaskValueFolder);
-        let permissionsFromFolderToFile =  permissionsValue1[1];
 
-        let permissionsValue2 = calculatePermissions(umaskValueFile);
-        let permissionsFromFileToFolder = permissionsValue2[0];
-        
-        let folder1text = `Then use umask: ${umaskValueFolder.join('')}`;
-        let folder2text = `BE AWARE, files will then have ${permissionsNames(permissionsFromFolderToFile).join('')} permissions.`;
+        let permissionsValue1 = calculatePermissionsByUMASK(umaskValueFolder);
+        let permissionsFromFolderToFileScore = permissionsValue1[1];
 
-        let file1text;
-        let file2text;
-        if (umaskValueFile == -1){
-            file1text = `Cant set umask with these values for files.`
-            file2text = ``;
-        }
-        else{
-            file1text = `Then use umask: ${umaskValueFile.join('')}`
-            file2text = `BE AWARE, folders will then have ${permissionsNames(permissionsFromFileToFolder).join('')} permissions.`;
-        }
+        changeThePermissionsTo(permissionsFromFolderToFileScore, '[data-type-file]');
 
-        $('#umaskValueFolder').val(`${folder1text}`);
-        $('#collapseFolder').text(`${folder2text}`);
+        // let folder1text = `Then use umask: ${umaskValueFolder.join('')}`;
+        // let folder2text = `BE AWARE, files will then have ${permissionsNames(permissionsFromFolderToFile).join('')} permissions.`;
 
-        $('#umaskValueFile').val(`${file1text}`);
-        $('#collapseFile').text(`${file2text}`);
-        
+        // let file1text;
+        // let file2text;
+        // if (umaskValueFile == -1){
+        //     file1text = `Cant set umask with these values for files.`
+        //     file2text = ``;
+        // }
+        // else{
+        //     file1text = `Then use umask: ${umaskValueFile.join('')}`
+        //     file2text = `BE AWARE, folders will then have ${permissionsNames(permissionsFromFileToFolder).join('')} permissions.`;
+        // }
+
+        // $('#umaskValueFolder').val(`${folder1text}`);
+        // $('#collapseFolder').text(`${folder2text}`);
+
+        // $('#umaskValueFile').val(`${file1text}`);
+        // $('#collapseFile').text(`${file2text}`);
+
     })
 })
 
+// $(document).on('change', '[data-type-file]', function() {
+//     let permissionsScore = calcuatePermissionsScore('[data-type-file]');
+//     let umaskValue = calculateUMaskValue(permissionsScore);
+//     let umaskValueFile = umaskValue[1];
 
-function calcuatePermissionsScore() {
-    let checkBoxesLength = $('input[type=checkbox]').length;
+//     let permissionsValue1 = calculatePermissions(umaskValueFile);
+//     let permissionsFromFileToFolder = permissionsValue1[0];
+
+
+//     //console.log(permissionsFromFileToFolder)
+
+//     if (umaskValue != -1){
+//         changeThePermissionsTo(permissionsFromFileToFolder,'[data-type-folder');
+//     }
+//     else{
+//         console.log('cant change them')
+//     }
+
+
+// })
+
+
+function calculatePermissionsScore(type) {
+    let checkBoxesLength = $(type).length;
     let permissionsScore = [
         [0, 0, 0],
         [0, 0, 0],
@@ -45,7 +65,7 @@ function calcuatePermissionsScore() {
     ];
 
     for (let i = 0; i < checkBoxesLength; i++) {
-        let item = $('input[type=checkbox]').eq(i);
+        let item = $(type).eq(i);
         let checked = item.is(':checked');
         let group = item.attr('data-group');
         let permission = item.attr('data-permission');
@@ -108,7 +128,58 @@ function calcuatePermissionsScore() {
     return permissionsScore;
 }
 
-function calculateUMaskValue(score) {
+function calculatePermissionsByScore(permissionsScore) {
+    let retval = [];
+
+    for (let i = 0; i < permissionsScore.length; i++) {
+        let permission = permissionsScore[i];
+        switch (permission) {
+            case 7:
+                retval.push(1);
+                retval.push(1);
+                retval.push(1);
+                break;
+            case 6:
+                retval.push(1);
+                retval.push(1);
+                retval.push(0);
+                break;
+            case 5:
+                retval.push(1);
+                retval.push(0);
+                retval.push(1);
+                break;
+            case 4:
+                retval.push(1);
+                retval.push(0);
+                retval.push(0);
+                break;
+            case 3:
+                retval.push(0);
+                retval.push(1);
+                retval.push(1);
+                break;
+            case 2:
+                retval.push(0);
+                retval.push(1);
+                retval.push(0);
+                break;
+            case 1:
+                retval.push(0);
+                retval.push(0);
+                retval.push(1);
+                break;
+            case 0:
+                retval.push(0);
+                retval.push(0);
+                retval.push(0);
+                break;
+        }
+    }
+    return retval;
+}
+
+function calculateUMaskValueByScore(score) {
     let val = [0, 0, 0];
     for (let i = 0; i < score.length; i++) {
         if (score[i][0] == 1) {
@@ -138,18 +209,18 @@ function calculateUMaskValue(score) {
             break;
         }
     }
-
+    //console.table()
     return [full1, full2];
 }
 
-function calculatePermissions(umask) {
+function calculatePermissionsByUMASK(umask) {
     let full1 = [7, 7, 7];
     let full2 = [6, 6, 6];
 
     for (let i = 0; i < umask.length; i++) {
         full1[i] -= umask[i];
         full2[i] -= umask[i];
-        switch(full2[i]){
+        switch (full2[i]) {
             case -1:
                 full2[i] = 0
                 break;
@@ -166,15 +237,15 @@ function calculatePermissions(umask) {
                 break;
         }
     }
-    return [full1,full2];
+    return [full1, full2];
 }
 
-function permissionsNames(permissions){
+function permissionsNames(permissions) {
     let retval = [];
 
-    for (let permission of permissions){
+    for (let permission of permissions) {
         retval.push('|')
-        switch(permission){
+        switch (permission) {
             case 7:
                 retval.push('r');
                 retval.push('w');
@@ -219,4 +290,19 @@ function permissionsNames(permissions){
     }
     retval.push('|');
     return retval;
+}
+
+
+
+function changeThePermissionsTo(permissionsScore, type) {
+    let permissions = calculatePermissionsByScore(permissionsScore);
+    for (let i = 0; i < 9; i++) {
+        let permission = permissions[i];
+        if (permission) {
+            $(type).eq(i).parent('label').addClass('active');
+        } else {
+            $(type).eq(i).parent('label').removeClass('active');
+        }
+
+    }
 }
