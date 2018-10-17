@@ -143,7 +143,6 @@ function calculateUMaskValue(score) {
 }
 
 function calculatePermissions(umask) {
-    console.log(`umask -> ${umask}`)
     let full1 = [7, 7, 7];
     let full2 = [6, 6, 6];
 
