@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
     <!-- Custom Libraries -->
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src='z9.js'></script>
@@ -20,87 +21,71 @@
         <div class='col-md-8 text-center'>
             <div class='text-center'>
                 <h3>
-                    UMASK Generator(<a href="https://alator21.github.io/z9/">z9</a>)
+                    UMASK Generator(<a href="https://github.com/alator21/z9" target='_blank'>z9</a>)
                 </h3>
             </div>
             <br>
             <div class='col-md-6' id='folderPermissions'>
                 <div class='text-center'>
                     <span class='t1'>
-                    Folder permissions
-                </span>
+                        Folder permissions
+                    </span>
                     <br>
                     <span class='title'>
-                    Owner
-                </span>
+                        Owner
+                    </span>
                 </div>
                 <br>
-                <div class='btn-group' data-toggle="buttons">
-                    <label class="btn btn-default">
-                        Read
-                        <input type="checkbox" autocomplete="off" data-group='owner' data-permission='read' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Write
-                        <input type="checkbox" autocomplete="off" data-group='owner' data-permission='write' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Execute
-                        <input type="checkbox" autocomplete="off" data-group='owner' data-permission='execute' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" data-group='owner' data-permission='read' data-type-folder>
+                    <label for="inlineCheckbox1"> Read </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" data-group='owner' data-permission='write' data-type-folder>
+                    <label for="inlineCheckbox2"> Write </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" data-group='owner' data-permission='execute' data-type-folder>
+                    <label for="inlineCheckbox3"> Execute </label>
                 </div>
                 <br><br>
                 <div class='text-center'>
                     <span class='title'>
-                    Group
-                </span>
+                        Group
+                    </span>
                 </div>
                 <br>
-                <div class='btn-group' data-toggle="buttons">
-                    <label class="btn btn-default">
-                        Read
-                        <input type="checkbox" autocomplete="off" data-group='group' data-permission='read' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Write
-                        <input type="checkbox" autocomplete="off" data-group='group' data-permission='write' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Execute
-                        <input type="checkbox" autocomplete="off" data-group='group' data-permission='execute' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox4" data-group='group' data-permission='read' data-type-folder>
+                    <label for="inlineCheckbox4"> Read </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox5" data-group='group' data-permission='write' data-type-folder>
+                    <label for="inlineCheckbox5"> Write </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox6" data-group='group' data-permission='execute' data-type-folder>
+                    <label for="inlineCheckbox6"> Execute </label>
                 </div>
                 <br><br>
                 <div class='text-center'>
                     <span class='title'>
-                    Others
-                </span>
+                        Others
+                    </span>
                 </div>
                 <br>
-                <div class='btn-group' data-toggle="buttons">
-                    <label class="btn btn-default">
-                        Read
-                        <input type="checkbox" autocomplete="off" data-group='others' data-permission='read' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Write
-                        <input type="checkbox" autocomplete="off" data-group='others' data-permission='write' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Execute
-                        <input type="checkbox" autocomplete="off" data-group='others' data-permission='execute' data-type-folder />
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox7" data-group='others' data-permission='read' data-type-folder>
+                    <label for="inlineCheckbox7"> Read </label>
                 </div>
-                <br><br><br><br>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox8" data-group='others' data-permission='write' data-type-folder>
+                    <label for="inlineCheckbox8"> Write </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox9" data-group='others' data-permission='execute' data-type-folder>
+                    <label for="inlineCheckbox9"> Execute </label>
+                </div>
             </div>
             <div class='col-md-6' id='filePermissions'>
                 <div class='text-center'>
@@ -113,74 +98,58 @@
                 </span>
                 </div>
                 <br>
-                <div class='btn-group' data-toggle="buttons">
-                    <label class="btn btn-default">
-                        Read
-                        <input type="checkbox" autocomplete="off" data-group='owner' data-permission='read' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Write
-                        <input type="checkbox" autocomplete="off" data-group='owner' data-permission='write' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Execute
-                        <input type="checkbox" autocomplete="off" data-group='owner' data-permission='execute' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox10" data-group='owner' data-permission='read' data-type-file>
+                    <label for="inlineCheckbox10"> Read </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox11" data-group='owner' data-permission='write' data-type-file>
+                    <label for="inlineCheckbox11"> Write </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox12" data-group='owner' data-permission='execute' data-type-file disabled>
+                    <label for="inlineCheckbox12"> Execute </label>
                 </div>
                 <br><br>
                 <div class='text-center'>
                     <span class='title'>
-                    Group
-                </span>
+                        Group
+                    </span>
                 </div>
                 <br>
-                <div class='btn-group' data-toggle="buttons">
-                    <label class="btn btn-default">
-                        Read
-                        <input type="checkbox" autocomplete="off" data-group='group' data-permission='read' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Write
-                        <input type="checkbox" autocomplete="off" data-group='group' data-permission='write' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Execute
-                        <input type="checkbox" autocomplete="off" data-group='group' data-permission='execute' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox13" data-group='group' data-permission='read' data-type-file>
+                    <label for="inlineCheckbox13"> Read </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox14" data-group='group' data-permission='write' data-type-file>
+                    <label for="inlineCheckbox14"> Write </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox15" data-group='group' data-permission='execute' data-type-file disabled>
+                    <label for="inlineCheckbox15"> Execute </label>
                 </div>
                 <br><br>
                 <div class='text-center'>
                     <span class='title'>
-                    Others
-                </span>
+                        Others
+                    </span>
                 </div>
                 <br>
-                <div class='btn-group' data-toggle="buttons">
-                    <label class="btn btn-default">
-                        Read
-                        <input type="checkbox" autocomplete="off" data-group='others' data-permission='read' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Write
-                        <input type="checkbox" autocomplete="off" data-group='others' data-permission='write' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
-                    <label class="btn btn-default">
-                        Execute
-                        <input type="checkbox" autocomplete="off" data-group='others' data-permission='execute' data-type-file/>
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </label>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox16" data-group='others' data-permission='read' data-type-file>
+                    <label for="inlineCheckbox16"> Read </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox16" data-group='others' data-permission='write' data-type-file>
+                    <label for="inlineCheckbox16"> Write </label>
+                </div>
+                <div class="checkbox checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox17" data-group='others' data-permission='execute' data-type-file disabled>
+                    <label for="inlineCheckbox17"> Execute </label>
                 </div>
                 <br><br><br><br>
             </div>
-
             <div id='results'>
                 Results here
             </div>
@@ -193,8 +162,9 @@
                     <span class='t2'>
                         created by 
                         <a href="https://github.com/alator21" target="_blank">
-                            Alator and contributors
+                            Alator
                         </a>
+                        and contributors
                     </span>
                 </div>
             </div>

@@ -11,6 +11,10 @@ $(function() {
 
         changeThePermissionsTo(permissionsFromFolderToFileScore, '[data-type-file]');
 
+        let resultText = `Generated UMASK value: ${umaskValueFolder.join('')}.`;
+
+        $('#results').text(resultText);
+
         // let folder1text = `Then use umask: ${umaskValueFolder.join('')}`;
         // let folder2text = `BE AWARE, files will then have ${permissionsNames(permissionsFromFolderToFile).join('')} permissions.`;
 
@@ -34,26 +38,31 @@ $(function() {
     })
 })
 
-// $(document).on('change', '[data-type-file]', function() {
-//     let permissionsScore = calcuatePermissionsScore('[data-type-file]');
-//     let umaskValue = calculateUMaskValue(permissionsScore);
-//     let umaskValueFile = umaskValue[1];
+$(document).on('change', '[data-type-file]', function() {
 
-//     let permissionsValue1 = calculatePermissions(umaskValueFile);
-//     let permissionsFromFileToFolder = permissionsValue1[0];
+    let permissionsScore = calculatePermissionsScore('[data-type-file]');
+    let umaskValue = calculateUMaskValueByScore(permissionsScore);
+    let umaskValueFile = umaskValue[1];
 
 
-//     //console.log(permissionsFromFileToFolder)
-
-//     if (umaskValue != -1){
-//         changeThePermissionsTo(permissionsFromFileToFolder,'[data-type-folder');
-//     }
-//     else{
-//         console.log('cant change them')
-//     }
+    let permissionsValue1 = calculatePermissionsByUMASK(umaskValueFile);
+    let permissionsFromFileToFolder = permissionsValue1[0];
 
 
-// })
+
+    let resultText = ``;
+
+    if (umaskValueFile != -1) {
+        changeThePermissionsTo(permissionsFromFileToFolder, '[data-type-folder');
+        resultText = `Generated UMASK value: ${umaskValueFile.join('')}.`;
+    } else {
+        console.log('Something is wrong!');
+        resultText(`Something is wrong!`);
+    }
+    $('#results').text(resultText);
+
+
+})
 
 
 function calculatePermissionsScore(type) {
@@ -299,9 +308,9 @@ function changeThePermissionsTo(permissionsScore, type) {
     for (let i = 0; i < 9; i++) {
         let permission = permissions[i];
         if (permission) {
-            $(type).eq(i).parent('label').addClass('active');
+            $(type).eq(i).prop('checked', true);
         } else {
-            $(type).eq(i).parent('label').removeClass('active');
+            $(type).eq(i).prop('checked', false)
         }
 
     }
