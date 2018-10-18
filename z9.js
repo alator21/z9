@@ -14,27 +14,6 @@ $(function() {
         let resultText = `Generated UMASK value: ${umaskValueFolder.join('')}.`;
 
         $('#results').text(resultText);
-
-        // let folder1text = `Then use umask: ${umaskValueFolder.join('')}`;
-        // let folder2text = `BE AWARE, files will then have ${permissionsNames(permissionsFromFolderToFile).join('')} permissions.`;
-
-        // let file1text;
-        // let file2text;
-        // if (umaskValueFile == -1){
-        //     file1text = `Cant set umask with these values for files.`
-        //     file2text = ``;
-        // }
-        // else{
-        //     file1text = `Then use umask: ${umaskValueFile.join('')}`
-        //     file2text = `BE AWARE, folders will then have ${permissionsNames(permissionsFromFileToFolder).join('')} permissions.`;
-        // }
-
-        // $('#umaskValueFolder').val(`${folder1text}`);
-        // $('#collapseFolder').text(`${folder2text}`);
-
-        // $('#umaskValueFile').val(`${file1text}`);
-        // $('#collapseFile').text(`${file2text}`);
-
     })
 })
 
@@ -60,8 +39,6 @@ $(document).on('change', '[data-type-file]', function() {
         resultText(`Something is wrong!`);
     }
     $('#results').text(resultText);
-
-
 })
 
 
@@ -218,7 +195,6 @@ function calculateUMaskValueByScore(score) {
             break;
         }
     }
-    //console.table()
     return [full1, full2];
 }
 
@@ -312,6 +288,5 @@ function changeThePermissionsTo(permissionsScore, type) {
         } else {
             $(type).eq(i).prop('checked', false)
         }
-
     }
 }

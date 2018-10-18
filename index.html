@@ -16,7 +16,27 @@
 
 <body>
     <div class='container-fluid'>
-        <div class='col-md-1'>
+        <div class='col-md-2'>
+            <div class="panel panel-info">
+                <div class="panel-heading text-center">INFO</div>
+                <div class="panel-body">
+                    022 is the most common value for UMASK!
+                    <br>
+                    ----------------------
+                    <br>
+                    You should set the UMASK value in ~/.bashrc OR ~/.bash_profile
+                    <br>
+                    ----------------------
+                    <br>
+                    You can set the UMASK value but typing the command
+                    <pre>umask VALUE</pre>
+                    <br>
+                    ----------------------
+                    <br>
+                    You can not set the execute permission on files using UMASK. You can do it manually using the command
+                    <pre>chmod</pre> on each file.
+                </div>
+            </div>
         </div>
         <div class='col-md-8 text-center'>
             <div class='text-center'>
@@ -153,19 +173,15 @@
             <div id='results'>
             </div>
         </div>
-        <div class='col-md-3'>
-            <div class='col-md-3'>
-            </div>
-            <div class='col-md-9'>
-                <div id='footer'>
-                    <span class='t2'>
-                        created by 
-                        <a href="https://github.com/alator21" target="_blank">
-                            Alator
-                        </a>
-                        and contributors
-                    </span>
-                </div>
+        <div class='col-md-2'>
+            <div id='footer'>
+                <span class='t2'>
+                    created by 
+                    <a href="https://github.com/alator21" target="_blank">
+                        Alator
+                    </a>
+                    and contributors
+                </span>
             </div>
         </div>
     </div>
