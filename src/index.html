@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>z9</title>
+    <!-- Favicon -->
+    <link rel='icon' href='https://alator21.github.io/assets/favicon/generic/summer.png' type='image/x-icon' />
+    <!-- Favicon -->
+    <!-- Bootstrap & jQuery -->
+    <link rel='stylesheet' type='text/css' href='https://alator21.github.io/assets/byLibrary/bootstrap/css/bootstrap.min.css'>
+    <script type='text/javascript' src='https://alator21.github.io/assets/byLibrary/bootstrap/jquery.min.js'></script>
+    <script type='text/javascript' src='https://alator21.github.io/assets/byLibrary/bootstrap/js/bootstrap.min.js'></script>
+    <!-- Bootstrap & jQuery -->
+    <!-- Font Awesome -->
+    <link rel='stylesheet' type='text/css' href='https://alator21.github.io/assets/byLibrary/font-awesome/css/font-awesome.min.css'>
+    <!-- Font Awesome -->
+    <!-- Custom Libraries -->
+    <link rel="stylesheet" type="text/css" href="lib/style.css">
+    <script src='logic.ts'></script>
+    <!-- Custom Libraries -->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+<div class='container-fluid'>
+    <div class='col-md-12 text-center'>
+        <div class='text-center'>
+            <h3>
+                UMASK Generator
+            </h3>
+        </div>
+        <br>
+        <div class='col-md-6' id='filePermissions'>
+            <div class='text-center'>
+                    <span class='t1'>
+                    File permissions
+                </span>
+                <br>
+                <span class='title'>
+                    Owner
+                </span>
+            </div>
+            <br>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default" id="inlineCheckbox10" data-group='owner' data-permission='read' data-type-file>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Read</span>
+                </label>
+
+                <label class="btn btn-default" id="inlineCheckbox11" data-group='owner' data-permission='write' data-type-file>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Write</span>
+                </label>
+                <label class="btn btn-danger" id="inlineCheckbox12" data-group='owner' data-permission='execute' data-type-file data-disabled>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Execute</span>
+                </label>
+            </div>
+            <br><br>
+            <div class='text-center'>
+                    <span class='title'>
+                        Group
+                    </span>
+            </div>
+            <br>
+
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default" id="inlineCheckbox13" data-group='group' data-permission='read' data-type-file>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Read</span>
+                </label>
+
+                <label class="btn btn-default" id="inlineCheckbox14" data-group='group' data-permission='write' data-type-file>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Write</span>
+                </label>
+                <label class="btn btn-danger" id="inlineCheckbox15" data-group='group' data-permission='execute' data-type-file data-disabled>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Execute</span>
+                </label>
+            </div>
+            <br><br>
+            <div class='text-center'>
+                    <span class='title'>
+                        Others
+                    </span>
+            </div>
+            <br>
+
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default" id="inlineCheckbox16" data-group='others' data-permission='read' data-type-file>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Read</span>
+                </label>
+
+                <label class="btn btn-default" id="inlineCheckbox17" data-group='others' data-permission='write' data-type-file>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Write</span>
+                </label>
+                <label class="btn btn-danger" id="inlineCheckbox18" data-group='others' data-permission='execute' data-type-file data-disabled>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Execute</span>
+                </label>
+            </div>
+        </div>
+        <div class='col-md-6' id='folderPermissions'>
+            <div class='text-center'>
+                    <span class='t1'>
+                        Folder permissions
+                    </span>
+                <br>
+                <span class='title'>
+                        Owner
+                    </span>
+            </div>
+            <br>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default" id="inlineCheckbox1" data-group='owner' data-permission='read' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Read</span>
+                </label>
+
+                <label class="btn btn-default" id="inlineCheckbox2" data-group='owner' data-permission='write' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Write</span>
+                </label>
+                <label class="btn btn-default" id="inlineCheckbox3" data-group='owner' data-permission='execute' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Execute</span>
+                </label>
+            </div>
+            <br><br>
+            <div class='text-center'>
+                    <span class='title'>
+                        Group
+                    </span>
+            </div>
+            <br>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default" id="inlineCheckbox4" data-group='group' data-permission='read' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Read</span>
+                </label>
+
+                <label class="btn btn-default" id="inlineCheckbox5" data-group='group' data-permission='write' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Write</span>
+                </label>
+                <label class="btn btn-default" id="inlineCheckbox6" data-group='group' data-permission='execute' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Execute</span>
+                </label>
+            </div>
+
+            <br><br>
+            <div class='text-center'>
+                    <span class='title'>
+                        Others
+                    </span>
+            </div>
+            <br>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default" id="inlineCheckbox7" data-group='others' data-permission='read' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Read</span>
+                </label>
+
+                <label class="btn btn-default" id="inlineCheckbox8" data-group='others' data-permission='write' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Write</span>
+                </label>
+                <label class="btn btn-default" id="inlineCheckbox9" data-group='others' data-permission='execute' data-type-folder>
+                    <input type="checkbox" autocomplete="off" >
+                    <span>Execute</span>
+                </label>
+            </div>
+            <br><br><br><br>
+        </div>
+        <div id='results'>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
