@@ -56,5 +56,3 @@ function combinePermissions(permissions){
 	}
 }
 ```
-
-You can find a demo [here](https://alator21.github.io/z9/).
