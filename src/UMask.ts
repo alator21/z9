@@ -101,4 +101,8 @@ export class UMask {
 		}
 		return FolderPermissions.fromCombinedPermissions(folderCombinedPermissions);
 	}
+
+	public prettyPrint():string{
+		return this.value.join('');
+	}
 }

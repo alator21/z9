@@ -3,40 +3,42 @@ import {FolderPermissions} from "./FolderPermissions";
 import {UMask} from "./UMask";
 import {FilePermissions} from "./FilePermissions";
 
+const filePermissionsSelector: string = `[data-type-file]`;
+const folderPermissionsSelector: string = `[data-type-folder]`;
+const turnedOnClass: string = `turnedOn`;
+const resultsId: string = `resultsUMask`;
 
 $(function () {
-	$(document).on('click','[data-type-file]', function () {
-		if ($(this).is("[data-disabled]")){
+	$(document).on('click', filePermissionsSelector, function () {
+		if (isDisabled($(this))) {
 			return;
 		}
-		if ($(this).hasClass('btn-default')){
-			$(this).removeClass('btn-default').addClass('btn-primary');
+		if (isTurnedOn($(this))) {
+			turnOff($(this));
+		} else {
+			turnOn($(this));
 		}
-		else{
-			$(this).removeClass('btn-primary').addClass('btn-default');
-		}
-		let fileExpandedPermissions: number[][] = calculateFileOrFolderExpandedPermissionByTheUserOptions('[data-type-file]');
+		let fileExpandedPermissions: number[][] = calculateFileOrFolderExpandedPermissionByTheUserOptions(filePermissionsSelector);
 		let filePermissions: FilePermissions = FilePermissions.fromExpandedPermissions(fileExpandedPermissions);
 		let uMask: UMask = UMask.fromFilePermissions(filePermissions);
 		changeUserOptionsToReflectUMask(uMask);
-		$('#results').text(uMask.value.join(''));
+		$(`#${resultsId}`).text(uMask.prettyPrint());
 	});
 
-	$(document).on('click','[data-type-folder]', function () {
-		if ($(this).is("[data-disabled]")){
+	$(document).on('click', folderPermissionsSelector, function () {
+		if (isDisabled($(this))) {
 			return;
 		}
-		if ($(this).hasClass('btn-default')){
-			$(this).removeClass('btn-default').addClass('btn-primary');
+		if (isTurnedOn($(this))) {
+			turnOff($(this));
+		} else {
+			turnOn($(this));
 		}
-		else{
-			$(this).removeClass('btn-primary').addClass('btn-default');
-		}
-		let folderExpandedPermissions: number[][] = calculateFileOrFolderExpandedPermissionByTheUserOptions('[data-type-folder]');
+		let folderExpandedPermissions: number[][] = calculateFileOrFolderExpandedPermissionByTheUserOptions(folderPermissionsSelector);
 		let folderPermissions: FolderPermissions = FolderPermissions.fromExpandedPermissions(folderExpandedPermissions);
 		let uMask: UMask = UMask.fromFolderPermissions(folderPermissions);
 		changeUserOptionsToReflectUMask(uMask);
-		$('#results').text(uMask.value.join(''));
+		$(`#${resultsId}`).text(uMask.prettyPrint());
 	})
 });
 
@@ -51,7 +53,7 @@ function calculateFileOrFolderExpandedPermissionByTheUserOptions(type): number[]
 
 	for (let i = 0; i < checkBoxesLength; i++) {
 		const item = $(type).eq(i);
-		const checked: number = (item.hasClass('btn-primary') && 1) || 0;
+		const checked: number = (isTurnedOn(item) && 1) || 0;
 		const group: string = item.attr('data-group');
 		const permission: string = item.attr('data-permission');
 		switch (group) {
@@ -108,30 +110,46 @@ function calculateFileOrFolderExpandedPermissionByTheUserOptions(type): number[]
 }
 
 function changeUserOptionsToReflectUMask(umask: UMask): void {
-	const fileExpandedPermissions:number[][] = umask.filePermissions.getExpandedPermissions();
+	const fileExpandedPermissions: number[][] = umask.filePermissions.getExpandedPermissions();
 	for (let i = 0; i < fileExpandedPermissions.length; i++) {
 		let permission = fileExpandedPermissions[i];
 		for (let j = 0; j < permission.length; j++) {
 			let p = permission[j];
 			let index: number = fileExpandedPermissions.length * i + j;
 			if (p === 1) {
-				$('[data-type-file]').eq(index).removeClass('btn-default').addClass('btn-primary');
+				turnOn($(filePermissionsSelector).eq(index));
 			} else {
-				$('[data-type-file]').eq(index).removeClass('btn-primary').addClass('btn-default');
+				turnOff($(filePermissionsSelector).eq(index));
 			}
 		}
 	}
-	const folderExpandedPermissions:number[][] = umask.folderPermissions.getExpandedPermissions();
+	const folderExpandedPermissions: number[][] = umask.folderPermissions.getExpandedPermissions();
 	for (let i = 0; i < folderExpandedPermissions.length; i++) {
 		let permission = folderExpandedPermissions[i];
 		for (let j = 0; j < permission.length; j++) {
 			let p = permission[j];
 			let index: number = folderExpandedPermissions.length * i + j;
 			if (p === 1) {
-				$('[data-type-folder]').eq(index).removeClass('btn-default').addClass('btn-primary');
+				turnOn($(folderPermissionsSelector).eq(index));
 			} else {
-				$('[data-type-folder]').eq(index).removeClass('btn-primary').addClass('btn-default');
+				turnOff($(folderPermissionsSelector).eq(index));
 			}
 		}
 	}
+}
+
+function isTurnedOn(element: JQuery<any>): boolean {
+	return element.hasClass(turnedOnClass);
+}
+
+function isDisabled(element: JQuery<any>): boolean {
+	return element.is("[data-disabled]");
+}
+
+function turnOn(element: JQuery<any>): void {
+	element.addClass(turnedOnClass);
+}
+
+function turnOff(element: JQuery<any>): void {
+	element.removeClass(turnedOnClass);
 }

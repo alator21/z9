@@ -1,187 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>z9</title>
-    <!-- Favicon -->
-    <link rel='icon' href='https://alator21.github.io/assets/favicon/generic/summer.png' type='image/x-icon' />
-    <!-- Favicon -->
-    <!-- Bootstrap & jQuery -->
-    <link rel='stylesheet' type='text/css' href='https://alator21.github.io/assets/byLibrary/bootstrap/css/bootstrap.min.css'>
-    <script type='text/javascript' src='https://alator21.github.io/assets/byLibrary/bootstrap/jquery.min.js'></script>
-    <script type='text/javascript' src='https://alator21.github.io/assets/byLibrary/bootstrap/js/bootstrap.min.js'></script>
-    <!-- Bootstrap & jQuery -->
-    <!-- Font Awesome -->
-    <link rel='stylesheet' type='text/css' href='https://alator21.github.io/assets/byLibrary/font-awesome/css/font-awesome.min.css'>
-    <!-- Font Awesome -->
-    <!-- Custom Libraries -->
+    <link rel='icon' href='assets/img/icons8-scuba-mask-64.png' type='image/x-icon'/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="lib/style.css">
-    <script src='logic.ts'></script>
-    <!-- Custom Libraries -->
-    <style type="text/css">
-    </style>
 </head>
 
 <body>
-<div class='container-fluid'>
-    <div class='col-md-12 text-center'>
-        <div class='text-center'>
-            <h3>
-                UMASK Generator
-            </h3>
-        </div>
-        <br>
-        <div class='col-md-6' id='filePermissions'>
-            <div class='text-center'>
-                    <span class='t1'>
-                    File permissions
-                </span>
-                <br>
-                <span class='title'>
-                    Owner
-                </span>
-            </div>
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" id="inlineCheckbox10" data-group='owner' data-permission='read' data-type-file>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Read</span>
-                </label>
-
-                <label class="btn btn-default" id="inlineCheckbox11" data-group='owner' data-permission='write' data-type-file>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Write</span>
-                </label>
-                <label class="btn btn-danger" id="inlineCheckbox12" data-group='owner' data-permission='execute' data-type-file data-disabled>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Execute</span>
-                </label>
-            </div>
-            <br><br>
-            <div class='text-center'>
-                    <span class='title'>
-                        Group
-                    </span>
-            </div>
-            <br>
-
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" id="inlineCheckbox13" data-group='group' data-permission='read' data-type-file>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Read</span>
-                </label>
-
-                <label class="btn btn-default" id="inlineCheckbox14" data-group='group' data-permission='write' data-type-file>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Write</span>
-                </label>
-                <label class="btn btn-danger" id="inlineCheckbox15" data-group='group' data-permission='execute' data-type-file data-disabled>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Execute</span>
-                </label>
-            </div>
-            <br><br>
-            <div class='text-center'>
-                    <span class='title'>
-                        Others
-                    </span>
-            </div>
-            <br>
-
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" id="inlineCheckbox16" data-group='others' data-permission='read' data-type-file>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Read</span>
-                </label>
-
-                <label class="btn btn-default" id="inlineCheckbox17" data-group='others' data-permission='write' data-type-file>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Write</span>
-                </label>
-                <label class="btn btn-danger" id="inlineCheckbox18" data-group='others' data-permission='execute' data-type-file data-disabled>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Execute</span>
-                </label>
-            </div>
-        </div>
-        <div class='col-md-6' id='folderPermissions'>
-            <div class='text-center'>
-                    <span class='t1'>
-                        Folder permissions
-                    </span>
-                <br>
-                <span class='title'>
+<div class="container">
+    <div class="row">
+        <div class='col'>
+            <div id='filePermissions' class='text-center'>
+                <div>
+                    <div class='title'>
+                        <h4>File permissions</h4>
+                    </div>
+                </div>
+                <div>
+                    <span class='subtitle'>
                         Owner
                     </span>
-            </div>
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" id="inlineCheckbox1" data-group='owner' data-permission='read' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Read</span>
-                </label>
+                </div>
+                <br>
+                <div class="btn-group">
+                    <span class="btn" id="inlineCheckbox10" data-group='owner' data-permission='read' data-type-file>
+                        Read
+                    </span>
 
-                <label class="btn btn-default" id="inlineCheckbox2" data-group='owner' data-permission='write' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Write</span>
-                </label>
-                <label class="btn btn-default" id="inlineCheckbox3" data-group='owner' data-permission='execute' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Execute</span>
-                </label>
-            </div>
-            <br><br>
-            <div class='text-center'>
-                    <span class='title'>
+                    <span class="btn" id="inlineCheckbox11" data-group='owner' data-permission='write' data-type-file>
+                        Write
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox12" data-group='owner' data-permission='execute' data-type-file
+                          data-disabled>
+                        Execute
+                    </span>
+                </div>
+                <br><br>
+                <div class='text-center'>
+                    <span class='subtitle'>
                         Group
                     </span>
-            </div>
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" id="inlineCheckbox4" data-group='group' data-permission='read' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Read</span>
-                </label>
+                </div>
+                <br>
 
-                <label class="btn btn-default" id="inlineCheckbox5" data-group='group' data-permission='write' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Write</span>
-                </label>
-                <label class="btn btn-default" id="inlineCheckbox6" data-group='group' data-permission='execute' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Execute</span>
-                </label>
-            </div>
+                <div class="btn-group" data-toggle="buttons">
+                     <span class="btn" id="inlineCheckbox13" data-group='group' data-permission='read' data-type-file>
+                        Read
+                    </span>
 
-            <br><br>
-            <div class='text-center'>
-                    <span class='title'>
+                    <span class="btn" id="inlineCheckbox14" data-group='group' data-permission='write' data-type-file>
+                        Write
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox15" data-group='group' data-permission='execute' data-type-file
+                          data-disabled>
+                        Execute
+                    </span>
+                </div>
+                <br><br>
+                <div class='text-center'>
+                    <span class='subtitle'>
                         Others
                     </span>
-            </div>
-            <br>
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default" id="inlineCheckbox7" data-group='others' data-permission='read' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Read</span>
-                </label>
+                </div>
+                <br>
 
-                <label class="btn btn-default" id="inlineCheckbox8" data-group='others' data-permission='write' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Write</span>
-                </label>
-                <label class="btn btn-default" id="inlineCheckbox9" data-group='others' data-permission='execute' data-type-folder>
-                    <input type="checkbox" autocomplete="off" >
-                    <span>Execute</span>
-                </label>
+                <div class="btn-group" data-toggle="buttons">
+                    <span class="btn" id="inlineCheckbox16" data-group='others' data-permission='read' data-type-file>
+                        Read
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox17" data-group='others' data-permission='write' data-type-file>
+                        Write
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox18" data-group='others' data-permission='execute' data-type-file
+                          data-disabled>
+                        Execute
+                    </span>
+                </div>
             </div>
-            <br><br><br><br>
         </div>
-        <div id='results'>
+
+        <div class='col'>
+            <div id='folderPermissions' class='text-center'>
+                <div>
+                    <div class='title'>
+                        <h4>Folder permissions</h4>
+                    </div>
+                </div>
+                <div>
+                    <span class='subtitle'>
+                        Owner
+                    </span>
+                </div>
+                <br>
+                <div class="btn-group" data-toggle="buttons">
+                    <span class="btn" id="inlineCheckbox1" data-group='owner' data-permission='read' data-type-folder>
+                        Read
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox2" data-group='owner' data-permission='write' data-type-folder>
+                        Write
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox3" data-group='owner' data-permission='execute'
+                          data-type-folder>
+                        Execute
+                    </span>
+                </div>
+                <br><br>
+                <div class='text-center'>
+                    <span class='subtitle'>
+                        Group
+                    </span>
+                </div>
+                <br>
+                <div class="btn-group" data-toggle="buttons">
+                    <span class="btn" id="inlineCheckbox4" data-group='group' data-permission='read' data-type-folder>
+                        Read
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox5" data-group='group' data-permission='write' data-type-folder>
+                        Write
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox6" data-group='group' data-permission='execute'
+                          data-type-folder>
+                        Execute
+                    </span>
+                </div>
+                <br><br>
+                <div class='text-center'>
+                    <span class='subtitle'>
+                        Others
+                    </span>
+                </div>
+                <br>
+                <div class="btn-group" data-toggle="buttons">
+                     <span class="btn" id="inlineCheckbox7" data-group='others' data-permission='read' data-type-folder>
+                        Read
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox8" data-group='others' data-permission='write' data-type-folder>
+                        Write
+                    </span>
+
+                    <span class="btn" id="inlineCheckbox9" data-group='others' data-permission='execute'
+                          data-type-folder>
+                        Execute
+                    </span>
+                </div>
+            </div>
+
         </div>
     </div>
-
+    <div class="row">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div id="results" class="text-center">Generated umask <span id="resultsUMask">-</span></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div id="acknowledgements" class="text-center">
+                <h4>UMask Generator(or z9)</h4>
+                by <a href="https://github.com/alator21">Alator</a>
+                <br>
+                Source code of this app can be found at <a
+                    href="https://github.com/alator21/z9">Github</a>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src='logic.ts'></script>
 </body>
 
 </html>
