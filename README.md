@@ -1,6 +1,6 @@
 # z9
 
-UMASK graphical editor + WIKI using Javascript.
+UMASK generator using <del>Javascript</del> Typescript.
 
 Contributors are welcome!
 
