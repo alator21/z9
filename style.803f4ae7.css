@@ -1,0 +1,50 @@
+body {
+    background-color: orange;
+}
+
+.title {
+    color: blue;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.subtitle {
+    color: black;
+    font-weight: bold;
+}
+
+#filePermissions, #folderPermissions {
+    background-color: #ffb371;
+    border: 3px dashed black;
+}
+
+[data-disabled] {
+    cursor: not-allowed;
+}
+
+.turnedOn {
+    background-color: white;
+    border: 2px dashed green;
+}
+
+#results{
+    background-color: #ffb371;
+    height:30px;
+    border: 3px dashed black;
+    border-radius: 15px;
+}
+
+#acknowledgements{
+    background-color: #ff5e26;
+    height:100px;
+    border: 2px dashed black;
+    color:white;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+/*# sourceMappingURL=/style.803f4ae7.css.map */
