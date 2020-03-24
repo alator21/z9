@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/alator21/z9#readme",
   "devDependencies": {
-    "@types/jquery": "^3.3.31",
+    "@types/jquery": "^3.3.33",
     "cross-env": "^5.2.0",
     "gh-pages": "^1.2.0",
     "parcel-bundler": "^1.12.4",
